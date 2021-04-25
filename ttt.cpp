@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include "minimax.cpp"
+#include "functions.cpp"
 
 using namespace std;
 
@@ -31,20 +31,36 @@ void Pmove(char (&x)[3][3], int turn){
     else goto noavail;
 }
 
-int main(){
-    char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win = ' ';
+char Play1(char (&x)[3][3]){
     int turn;
-    board(ttt);
+    char win;
+    board(x);
     for(int i=0; i<9; i++){
         turn = i%2;
-        Pmove(ttt, turn);
-        board(ttt);
-        win = checkWin(ttt);
+        Pmove(x, turn);
+        board(x);
+        win = checkWin(x);
         cout << win << endl;
         if(win != ' ') break;
     }
-    board(ttt);
+    board(x);
+    return win;
+}
+
+int main(){
+    char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win = Play1(ttt);
+    // int turn;
+    // board(ttt);
+    // for(int i=0; i<9; i++){
+    //     turn = i%2;
+    //     Pmove(ttt, turn);
+    //     board(ttt);
+    //     win = checkWin(ttt);
+    //     cout << win << endl;
+    //     if(win != ' ') break;
+    // }
+    // board(ttt);
     if(win == 't') cout << "TIE" << endl;
-    else cout << players[turn] << " WIN" << endl;
+    else cout << win << " WIN" << endl;
     return 0;
 }
