@@ -3,7 +3,7 @@
 
 using namespace std;
 
-char players[] = {'O', 'X'};
+const char players[] = {'O', 'X'};
 // char curPlayer, nextPlayer;
 
 void board(char x[3][3]){
@@ -49,17 +49,6 @@ char Play1(char (&x)[3][3]){
 
 int main(){
     char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win = Play1(ttt);
-    // int turn;
-    // board(ttt);
-    // for(int i=0; i<9; i++){
-    //     turn = i%2;
-    //     Pmove(ttt, turn);
-    //     board(ttt);
-    //     win = checkWin(ttt);
-    //     cout << win << endl;
-    //     if(win != ' ') break;
-    // }
-    // board(ttt);
     if(win == 't') cout << "TIE" << endl;
     else cout << win << " WIN" << endl;
     return 0;
