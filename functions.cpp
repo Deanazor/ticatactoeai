@@ -56,7 +56,7 @@ int minimax(char x[3][3], bool maximizing, char curPlayer, char nextPlayer){
     if(win != ' ') return scores[win];
 
     if(maximizing){
-        int optScore = -2147483648;
+        int optScore = -9999;
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
                 if(x[i][j] == ' '){
@@ -70,7 +70,7 @@ int minimax(char x[3][3], bool maximizing, char curPlayer, char nextPlayer){
         return optScore;
     }
     else{
-        int optScore = 2147483648;
+        int optScore = 9999;
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
                 if(x[i][j] == ' '){
@@ -86,7 +86,7 @@ int minimax(char x[3][3], bool maximizing, char curPlayer, char nextPlayer){
 }
 
 void Imove(char (&x)[3][3], char curPlayer, char nextPlayer){
-    int optScore = -2147483648;
+    int optScore = -9999;
     vector<int> next(2);
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
