@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <stdlib.h>
 #include "functions.cpp"
 
 using namespace std;
@@ -47,8 +48,32 @@ char Play1(char (&x)[3][3]){
     return win;
 }
 
+char Play2(char (&x)[3][3]){
+    int pchoice, turn;
+    re:cout << "Choose palyer\n1. O\n2.X\n Your choice?";
+    cin >> pchoice;
+    --pchoice;
+    if(pchoice>1 || pchoice<0) goto re;
+    char human = players[pchoice], bot = players[(int) pchoice == 0], win;
+    cout << human << " " << bot << endl;
+    for(int i=0; i<9; i++){
+        turn = i%2;
+        if(turn == pchoice) Pmove(x, turn);
+        else {
+            Imove(x, bot, human);
+            _sleep(2000);
+        }
+        board(x);
+        win = checkWin(x);
+        cout << win << endl;
+        if(win != ' ') break;
+    }
+    board(x);
+    return win;
+}
+
 int main(){
-    char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win = Play1(ttt);
+    char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win = Play2(ttt);
     if(win == 't') cout << "TIE" << endl;
     else cout << win << " WIN" << endl;
     return 0;

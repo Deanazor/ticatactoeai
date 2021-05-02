@@ -62,6 +62,7 @@ int minimax(char x[3][3], bool maximizing, char curPlayer, char nextPlayer){
                 if(x[i][j] == ' '){
                     x[i][j] = curPlayer;
                     int score = minimax(x, false, curPlayer, nextPlayer);
+                    x[i][j] = ' ';
                     optScore = max(score, optScore);
                 }
             }
@@ -75,6 +76,7 @@ int minimax(char x[3][3], bool maximizing, char curPlayer, char nextPlayer){
                 if(x[i][j] == ' '){
                     x[i][j] = nextPlayer;
                     int score = minimax(x, true, curPlayer, nextPlayer);
+                    x[i][j] = ' ';
                     optScore = min(score, optScore);
                 }
             }
