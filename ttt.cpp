@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
-#include <stdlib.h>
+#include<windows.h>
 #include "functions.cpp"
 
 using namespace std;
 
-const char players[] = {'O', 'X'};
+// const char players[] = {'O', 'X'};
 // char curPlayer, nextPlayer;
 
 void board(char x[3][3]){
@@ -13,23 +13,6 @@ void board(char x[3][3]){
         cout << "  "<<x[i][0]<<"   |   "<<x[i][1]<<"   |   "<<x[i][2]<<endl;
         if(i<2) cout << "----------------------\n";
     }
-}
-
-bool checkAvail(char x[3][3], int i, int j){
-    bool avail = true;
-    if(x[i][j] != ' ') avail = false;
-    return avail;
-}
-
-void Pmove(char (&x)[3][3], int turn){
-    int ins,i,j;
-    noavail:cout << "Player " << players[turn] << " turn" << endl;
-    cin >> ins;
-    ins--;
-    i = ins/3;
-    j = ins%3;
-    if(checkAvail(x,i,j)) x[i][j] = players[turn];
-    else goto noavail;
 }
 
 char Play1(char (&x)[3][3]){
@@ -48,19 +31,21 @@ char Play1(char (&x)[3][3]){
     return win;
 }
 
-char Play2(char (&x)[3][3]){
+char Play2(char x[3][3]){
     int pchoice, turn;
-    re:cout << "Choose palyer\n1. O\n2. X\nYour choice? ";
+    re:
+    cout << "Choose palyer\n1. O\n2. X\nYour choice? ";
     cin >> pchoice;
     --pchoice;
     if(pchoice>1 || pchoice<0) goto re;
     char human = players[pchoice], bot = players[(int) pchoice == 0], win;
+    board(x);
     for(int i=0; i<9; i++){
         turn = i%2;
         if(turn == pchoice) Pmove(x, turn);
         else {
             Imove(x, bot, human);
-            _sleep(200);
+            Sleep(200);
         }
         board(x);
         win = checkWin(x);

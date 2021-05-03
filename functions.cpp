@@ -1,7 +1,25 @@
 #include<bits/stdc++.h>
-// #include "ttt.cpp"
 
 using namespace std;
+const char players[] = {'O', 'X'};
+
+bool checkAvail(char x[3][3], int i, int j){
+    bool avail = true;
+    if(x[i][j] != ' ') avail = false;
+    return avail;
+}
+
+void Pmove(char x[3][3], int turn){
+    int ins,i,j;
+    noavail:
+    cout << "Player " << players[turn] << " turn" << endl;
+    cin >> ins;
+    ins--;
+    i = ins/3;
+    j = ins%3;
+    if(checkAvail(x,i,j)) x[i][j] = players[turn];
+    else goto noavail;
+}
 
 bool threeEquals(char a, char b, char c){
     return (a == b) && (b==c) && (a != ' ');
@@ -85,7 +103,7 @@ int minimax(char x[3][3], bool maximizing, char curPlayer, char nextPlayer){
     }
 }
 
-void Imove(char (&x)[3][3], char curPlayer, char nextPlayer){
+void Imove(char x[3][3], char curPlayer, char nextPlayer){
     int optScore = -9999;
     vector<int> next(2);
     for(int i=0; i<3; i++){
