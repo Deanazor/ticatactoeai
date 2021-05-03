@@ -4,9 +4,6 @@
 
 using namespace std;
 
-// const char players[] = {'O', 'X'};
-// char curPlayer, nextPlayer;
-
 void board(char x[3][3]){
     system("CLS");
     for(int i=0; i<3; i++){
@@ -57,7 +54,23 @@ char Play2(char x[3][3]){
 }
 
 int main(){
-    char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win = Play2(ttt);
+    char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win;
+    int mode;
+    re_mode:
+    cout << "Which game mode?\n1. vs human\n2. vs AI\nYour choice? ";
+    cin >> mode;
+    switch (mode)
+    {
+    case 1:
+        win = Play1(ttt);
+        break;
+    case 2:
+        win = Play2(ttt);
+        break;
+    default:
+        goto re_mode;
+        break;
+    }
     if(win == 't') cout << "TIE" << endl;
     else cout << win << " WIN" << endl;
     return 0;
