@@ -31,7 +31,7 @@ char Play1(char (&x)[3][3]){
 char Play2(char x[3][3]){
     int pchoice, turn;
     re:
-    cout << "Choose palyer\n1. O\n2. X\nYour choice? ";
+    cout << "Choose palyer\n1. O\n2. X\nYour choice: ";
     cin >> pchoice;
     --pchoice;
     if(pchoice>1 || pchoice<0) goto re;
@@ -57,7 +57,7 @@ int main(){
     char ttt[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}}, win;
     int mode;
     re_mode:
-    cout << "Which game mode?\n1. vs human\n2. vs AI\nYour choice? ";
+    cout << "Which game mode?\n1. vs human\n2. vs AI\nYour choice: ";
     cin >> mode;
     switch (mode)
     {
