@@ -4,14 +4,6 @@
 
 using namespace std;
 
-void board(char x[3][3]){
-    system("CLS");
-    for(int i=0; i<3; i++){
-        cout << "  "<<x[i][0]<<"   |   "<<x[i][1]<<"   |   "<<x[i][2]<<endl;
-        if(i<2) cout << "----------------------\n";
-    }
-}
-
 char Play1(char (&x)[3][3]){
     int turn;
     char win;
